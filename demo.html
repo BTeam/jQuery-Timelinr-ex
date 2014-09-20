@@ -1,0 +1,105 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery.timelinr-0.9.54.js"></script> 
+	<link rel="stylesheet" type="text/css" href="css/timeline-base.css">
+	<link rel="stylesheet" type="text/css" href="css/timeline.css">
+	<link rel="stylesheet" type="text/css" href="css/timeline-v.css">
+	<title>z</title>
+	<script type="text/javascript">
+	
+$(function(){
+
+   $('#shopList>li').each(function(i,elem){
+   console.log(i)
+		var index = i+1;
+		var con = 'detailListContainer';
+		var issuer = 'detailList';
+		var issue = 'detail';
+		var swicher = 'detailListSwitcher';
+		var issueNum = 10;
+		var html = '<div id="'+con+index+'" class="'+con+' timeline-v">\
+						<ul id="'+swicher+index+'" class="dates">';
+		for(var j=1;j<=issueNum;++j){
+			html += 			'<li><!-a href ="#'+issue+index+'_'+j+'"--><a>切换'+issue+j+'</a></li>';
+		}
+			html +=		'</ul>\
+						<ul id="'+issuer+index+'" class="'+issuer+' issues">';
+		for(var j=1;j<=issueNum;++j){
+			html += 			'<li id ="'+issue+index+'_'+j+'" class="'+issue+'">\
+									'+issue+j+'\
+								</li>';
+		}
+			html +=		'</ul>\
+					</div>';
+		$(this).append(html);
+		
+		var conf = {
+			containerDiv : '#'+con+index,
+			issuesDiv : '#'+issuer+index,
+			datesDiv : '#'+swicher+index,
+			orientation:  'vertical',
+			issuesTransparency : 0
+	   }
+	   console.log(conf)
+		$().timelinr(conf); 
+   })
+   
+   
+   $().timelinr({
+		containerDiv : '#shopListContainer',
+		issuesDiv : '#shopList',
+		datesDiv : '#shopListSwitcher',
+		orientation:  'horizontal',
+		issuesTransparency : 0
+   }); 
+   
+   
+
+});
+	</script>
+</head>
+<body>
+	<div id="shopListContainer" class="timeline">
+		<ul id="shopListSwitcher" class="dates">
+			<li><a href="#shop1">shop1</a></li>
+            <li><a href="#shop2">shop2</a></li>
+            <li><a href="#shop3">shop3</a></li>
+            <li><a href="#shop4">shop4</a></li>
+   		</ul>
+		<ul id="shopList" class="issues">
+			<li id="shop1">
+				<img src="images/1.jpg">
+				<h2>名称:2011</h2>
+				<h2>联系人:</h2>
+				<h2>电话:</h2>
+			</li>
+			<li id="shop2">
+				<img src="images/1.jpg">
+				<h2>名称:2012</h2>
+				<h2>联系人:</h2>
+				<h2>电话:</h2>
+
+			</li>
+			<li id="shop3">
+				<img src="images/1.jpg">
+				<h2>名称:2013</h2>
+				<h2>联系人:</h2>
+				<h2>电话:</h2>
+
+			</li>
+			<li id="shop4">
+				<img src="images/1.jpg">
+				<h2>名称:2014</h2>
+				<h2>联系人:</h2>
+				<h2>电话:</h2>
+				
+			</li>
+		</ul>
+		
+		
+
+   	</div>
+</body>
+</html>
